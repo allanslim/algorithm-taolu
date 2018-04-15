@@ -1,4 +1,4 @@
 package com.allan.algorithm.taolu.hashmap;
 
-public class HashMap {
+public class HashMap<C, I> {
 }
