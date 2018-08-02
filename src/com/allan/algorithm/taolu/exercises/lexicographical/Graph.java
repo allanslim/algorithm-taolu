@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Graph {
-    public Map<String, Node> nodeLookup = new HashMap<>();
 
     public static class Node {
         public String id;
@@ -17,6 +16,9 @@ public class Graph {
             this.id = id;
         }
     }
+
+    public Map<String, Node> nodeLookup = new HashMap<>();
+
 
     public Node getOrCreateNode(String id) {
         if (!nodeLookup.containsKey(id)) {

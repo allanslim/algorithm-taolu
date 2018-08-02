@@ -1,4 +1,4 @@
-package com.allan.algorithm.taolu.exercises;
+package com.allan.algorithm.taolu.dp;
 
 public class MaximumSubarrayProblem {
 
