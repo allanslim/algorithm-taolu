@@ -69,6 +69,37 @@ import java.util.Set;
  * # output: ["n", "o", "s", "e"]
  * <p>
  * # GRAPH
+ *
+ *
+ *
+ *  Solution:
+ *
+ *  1) get the first two words from the list.
+ *
+ *     one
+ *     son
+ *
+ *  2) get the first two character that are not equal, return it s a tuple or a list
+ *
+ *    o,s
+ *
+ * 3) add them in a graph.
+ *
+ *   o->s
+ *
+ *  4) repeat until all the words are added in the graph.
+ *
+ *   o -> s
+ *   n -> o
+ *   s -> e
+ *
+ *   5) do a DFS read in the graph. (keeping track of visited).
+ *
+ *   e -> s -> o -> n
+ *
+ *   6) reverse the result
+ *
+ *   n -> o -> s -> e
  */
 
 public class LexicographicalOrder {

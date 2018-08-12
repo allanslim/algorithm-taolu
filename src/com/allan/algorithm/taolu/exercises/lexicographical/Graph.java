@@ -11,7 +11,6 @@ public class Graph {
     public static class Node {
         public String id;
         public List<Node> adjacent = new LinkedList<>();
-
         private Node(String id) {
             this.id = id;
         }

@@ -22,6 +22,46 @@ One possible longest palindromic subsequence is "bb".
 Analysis:
 
 ----------------
+
+STEPS:
+1) Start by creating a table of n x n. For example, if the input is "bab", create a 3x3 table,
+
+      0 1 2
+      b a b
+  0 b
+  1 a
+  2 b
+
+2) Start by assuming that your input is only 1 character at a time.  if the character you have is only b, then
+  you have the value 1. Now, if the character you have is a, then the value is also 1.
+
+
+      0 1 2
+      b a b
+  0 b 1
+  1 a   1
+  2 b     1
+
+ so for i=0,j=0, the value is 1. for i=1, j=1 the value is 1, and so on..
+
+
+3) Now if the length of the input is 2. You have the following:
+
+  ba
+  ab
+
+ ba and ab are not a palindrome.
+
+      0 1 2
+      b a b
+  0 b 1 1
+  1 a   1 1
+  2 b     1
+
+ba, is index 0 to 1, since b is not equal to a, the value would be the maximum between b and a, which is 1.
+
+
+
 example: babcbab
 
 babcbab
@@ -143,10 +183,10 @@ public class PalindromeSubsequence {
         }
         // printMatrix(table);
 
-        for(int cl = 2; cl <= n; cl++) {
-            for(int i = 0; i < n - cl + 1; i++) {
-                int j = i + cl - 1;
-                if(input.charAt(i) == input.charAt(j) && cl == 2) {
+        for(int lengthOfString = 2; lengthOfString <= n; lengthOfString++) {
+            for(int i = 0; i < n - lengthOfString + 1; i++) {   // +1 is required because the lengthOfString is <= n
+                int j = i + lengthOfString - 1; // -1 is required because we are using j as an index.
+                if(input.charAt(i) == input.charAt(j) && lengthOfString == 2) {
                     table[i][j] = 2;
                     //printMatrix(table);
                 }
