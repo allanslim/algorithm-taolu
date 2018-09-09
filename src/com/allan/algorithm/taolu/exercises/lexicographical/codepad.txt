@@ -1,0 +1,108 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+
+
+  public static class Node {
+     public String value;
+     public List<Node> adjacent = new LinkedList<>();
+     public Node(String value) { this.value = value; }
+  }
+
+  public static class Graph {
+    public Map<String,Node> nodeLookup = new HashMap<>();
+
+    public Node getOrCreateNode(String value) {
+      if(!nodeLookup.containsKey(value)) {
+          Node node = new Node(value);
+          nodeLookup.put(value, node);
+      }
+      return nodeLookup.get(value);
+    }
+
+    public void addEdge(String source, String destination) {
+        Node sourceNode = getOrCreateNode(source);
+        Node destinationNode = getOrCreateNode(destination);
+        sourceNode.adjacent.add(destinationNode);
+    }
+  }
+
+
+  public static void main(String[] args) {
+    Graph graph = new Graph();
+
+    List<String> words = new LinkedList<>();
+    words.add("one");
+    words.add("son");
+    words.add("soon");
+    words.add("eon");
+
+    List<String> ordered = lexico(words,graph);
+    for(String order: ordered ){
+        System.out.print(" " + order);
+    }
+  }
+
+  public static List<String> lexico(List<String> words, Graph graph) {
+
+      for(int i=0; i < words.size() - 1; i++ ) {
+
+           String word = words.get(i);
+           String nextWord = words.get(i + 1);
+
+           List<String> fld = extractfld(word, nextWord);
+
+           if(!fld.isEmpty()) {
+               graph.getOrCreateNode(fld.get(0));
+               graph.getOrCreateNode(fld.get(1));
+               graph.addEdge(fld.get(0), fld.get(1));
+           }
+      }
+     return topo(graph);
+
+
+
+  public static List<String> extractfld(String word, String nextWord) {
+    List<String> result = new ArrayList<>();
+    for(int i = 0; i < Math.min(word.length(), nextWord.length()); i++ ) {
+        if(word.charAt(i) != nextWord.charAt(i)) {
+            result.add(String.valueOf(word.charAt(i)));
+            result.add(String.valueOf(nextWord.charAt(i)));
+            return result;
+        }
+    }
+    return result;
+  }
+
+  public static List<String> topo(Graph graph) {
+      Set<String> visited = new HashSet<>();
+      List<String> result = new LinkedList<>();
+      for(Node node : graph.nodeLookup.values()) {
+          dfs(node, visited, result);
+      }
+      Collections.reverse(result);
+      return result;
+  }
+
+  public static void dfs(Node node, Set<String> visited, List<String> result) {
+      if(visited.contains(node.value)) {
+        return;
+      }
+      visited.add(node.value);
+      List<Node> neighbors = node.adjacent;
+      for( Node neighbor : neighbors) {
+          dfs(neighbor, visited, result);
+      }
+      result.add(node.value);
+  }
+
+
+}
