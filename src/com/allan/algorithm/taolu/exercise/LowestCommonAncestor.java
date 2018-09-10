@@ -1,7 +1,7 @@
 package com.allan.algorithm.taolu.exercise;
 
 import com.allan.algorithm.taolu.tree.BinaryTreeNode;
-import org.jetbrains.annotations.NotNull;
+
 
 public class LowestCommonAncestor {
 
@@ -45,7 +45,6 @@ public class LowestCommonAncestor {
         return node1;
     }
 
-    @NotNull
     private static BinaryTreeNode buildABinaryTree() {
         BinaryTreeNode node1 = new BinaryTreeNode(107);
         BinaryTreeNode node2 = new BinaryTreeNode(99);

@@ -31,19 +31,19 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
-            TrieNode t;
+            TrieNode trieNode;
 
             if (children.containsKey(c)) {
-                t = children.get(c);
+                trieNode = children.get(c);
             } else {
-                t = new TrieNode(c);
-                children.put(c, t);
+                trieNode = new TrieNode(c);
+                children.put(c, trieNode);
             }
 
-            children = t.children;
+            children = trieNode.children;
 
             if (i == word.length() - 1) {
-                t.isLeaf = true;
+                trieNode.isLeaf = true;
             }
         }
     }
