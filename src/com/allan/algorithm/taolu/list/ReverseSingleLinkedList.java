@@ -1,6 +1,9 @@
 package com.allan.algorithm.taolu.list;
 
 /**
+ *
+ * https://medium.com/outco/reversing-a-linked-list-easy-as-1-2-3-560fbffe2088
+ *
  * Reverse a singly linked list.
  *
  * input:
@@ -13,6 +16,15 @@ package com.allan.algorithm.taolu.list;
  *  Analysis:
  *  singly linked list only have one pointer. To reverse the list,
  *  we need to keep track of the previous, the current and the following.
+ *
+ * to start:
+ *
+ * pervious = null
+ * currrent  = head
+ * following = head
+ *
+ * previous is assigned to null, because an empty list can have head = null
+ *
  *
  *
  *    head -> [ 1 ] -> [ 2 ]
@@ -71,6 +83,7 @@ public class ReverseSingleLinkedList {
         public void append(int value) {
             if(this.head == null) {
                 this.head = new LinkedListNode(value);
+                return;
             }
             LinkedListNode current = this.head;
             while(current.next != null) {

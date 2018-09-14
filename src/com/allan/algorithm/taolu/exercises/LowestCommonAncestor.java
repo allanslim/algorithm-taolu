@@ -1,4 +1,4 @@
-package com.allan.algorithm.taolu.exercise;
+package com.allan.algorithm.taolu.exercises;
 
 import com.allan.algorithm.taolu.tree.BinaryTreeNode;
 

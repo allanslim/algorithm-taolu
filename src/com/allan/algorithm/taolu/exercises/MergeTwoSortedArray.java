@@ -1,4 +1,4 @@
-package com.allan.algorithm.taolu.exercise;
+package com.allan.algorithm.taolu.exercises;
 
 import java.util.Arrays;
 
