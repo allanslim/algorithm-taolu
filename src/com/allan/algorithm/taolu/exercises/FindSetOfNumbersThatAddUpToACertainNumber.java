@@ -5,7 +5,7 @@ package com.allan.algorithm.taolu.exercises;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DynamicProgramming1 {
+public class FindSetOfNumbersThatAddUpToACertainNumber {
 
 //    find sets of number that adds up to a certain number.
 //    array  = [2,4,6,10]
