@@ -57,15 +57,20 @@ public class ReverseLinkedListKGroup {
         return reversedList;
     }
 
-    public static LinkedListNode swapInAGroup(LinkedListNode start, int k) {
+    public static LinkedListNode swapInAGroup(LinkedListNode head, int k) {
+
+        if(head == null) {
+            return null;
+        }
+
         LinkedListNode p;
 
         // Go to the kth node
-        p = start;
+        p = head;
         int count = 0;
         while (count != k - 1) {
             if (p.next == null) {
-                return start;
+                return head;
             }
             p = p.next;
             count++;
@@ -75,20 +80,38 @@ public class ReverseLinkedListKGroup {
         LinkedListNode temp;
         LinkedListNode q = newStart;
         while (true) {
-            p = start;
+            p = head;
             temp = q.next;
-            // if total number of nodes is divisible by k (multiple of K
+            //
+            // in the case of:
+            // p     newStart      temp
+            // 1 ->  2   ---------> null
+            //
             if (temp == null) {
                 reverse(p);
                 return newStart;
             }
+            //
+            //  head,p        newStart,q         temp
+            //    1-----------> 2---------------->3  -> 4 --> 5
+            //
+            //
             q.next = null;
             q = temp;
-            start = temp;
+            head = temp;
+            count = 0;  // reset counter
 
-            count = 0;
-            // in the last outside while loop, if remainder is non-zero number of nodes
+            // move temp, to the kth of the next group:
+            //
+            //   p      newStart              temp,q,head
+            //   1 -------> 2 ------>null       3 ----------> 4 ---> 5
+            //
             while (count != k - 1) {
+                // if temp == null, reverse return newStart"
+                //
+                //  p      newStart              temp,q,head
+                //  1 --------> 2 ------> null      3  ---> null
+
                 if (temp.next == null) {
                     reverse(p);
                     p.next = q;
@@ -98,6 +121,22 @@ public class ReverseLinkedListKGroup {
                 count++;
             }
 
+            //
+            // reverse p:
+            //
+            //   p      newStart               q,head                  temp
+            //   1 <---------2<------------------3 --------> 4 ----------> 5
+            //
+            //  p.next = temp:
+            //
+            //        temp       p         newStart           head,q
+            //  4 ---> 5   <---- 1 <-----------2<----------------3
+            //
+            //   q = temp:
+            //
+            //           temp,q            p             newStart             head
+            //    4 ---> 5 <---------------1 <------------ 2 <---------------- 3
+            //
             reverse(p);
             p.next = temp;
             q = temp;
