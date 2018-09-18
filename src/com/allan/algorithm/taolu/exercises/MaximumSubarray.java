@@ -10,27 +10,29 @@ package com.allan.algorithm.taolu.exercises;
  Output: 6
  Explanation: [4,-1,2,1] has the largest sum = 6.
 
+ The naive solution is to do brute force, checking each subarray. But that will yield O(n^2) - quadratic
 
- // using kadane's algorithm
+ There's a better solution, for example:
 
- for example, if you have a n array, and given a kth element
+ [1, -3, 2, 1, -1]
+  ^   ^  ^  ^   ^
 
- |m  |  kth |  |
+ Let say, you are trying to solve the maximum so far sum ending at each index.
 
- the maximum subarray, as of kth element is either:
+ so for example, at index 2, so the maximum subarray from previous index would be:
 
- kth or
- m, kth
+ [1, -3] 2
+         ^
 
- Example:
-      v
- [-2, 3]
+ so the interesting idea here is that the local maximum subarray [2] is either the current element or the current
+ element combined with the preious maximum subarray.
 
- the maximum sub array is either:
+ [2] -or-
+ [1, -3, 2]
 
- (3)  = 3   -or-
- (-2, 3) = 1
+ you can compare only those and ignore the rest of the element, and the value is [2].
 
+ and you can do everything at each index, except for the first one. For the first one, you just have to choose.
 
 
  pseudocode:
@@ -48,6 +50,9 @@ package com.allan.algorithm.taolu.exercises;
           max_global = max_current
 
  return max_global
+
+ using kadane's algorithm
+
  */
 public class MaximumSubarray {
 
