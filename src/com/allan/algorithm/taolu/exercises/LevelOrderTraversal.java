@@ -9,13 +9,13 @@ import java.util.Queue;
  1) enqueue root
  2) dequeue and print, then enqueue left and right child of the node. then repeat.
 
- 3
- /\
- /  \
- 9  20
- /\
- /  \
- 15   7
+      3
+     /\
+    /  \
+    9  20
+   /\
+  /  \
+ 15  7
 
  output:
  3 9 20 15 7

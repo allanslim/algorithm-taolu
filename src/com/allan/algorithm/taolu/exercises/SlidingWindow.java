@@ -71,7 +71,7 @@ public class SlidingWindow {
     public static void main(String[] args) {
 //        int arr[] = {1, 4, 2, 10, 2, 3, 1, 0, 20};
 //        int k = 4;
-        int arr[] = {4,1,5,4,7,8,3};
+        int arr[] = {4,1,5,4,7,8,100};
         int k = 3;
         long start = System.nanoTime();
         System.out.print("The maximum sum of subarray of size " + k + " is: " + maxSum(arr, k));
