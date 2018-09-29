@@ -52,7 +52,9 @@ public class DoublyLinkedListExample {
         public void removeFromTail() {
             if (tail != null) {
                 tail = tail.previous;
-                tail.next = null;
+                if(tail != null) {
+                    tail.next = null;
+                }
             }
         }
 
