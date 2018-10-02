@@ -15,7 +15,7 @@ Output: "bb"
 
 okay, the idea here is to first identify what is a palidrome.
 
-A palindrome is a word or prhase, that reads the same backward as forward.
+A palindrome is a word or phrase, that reads the same backward as forward.
 
 for example:
 
@@ -43,6 +43,39 @@ So you can derive this criteria:
 We need a variable to keep track of the data. The simpliest way, since we need to keep track of 2 variables at a time,
 is to use a 2-dimensional boolean array.
 
+
+loop 1:
+
+        0 1 2
+        b o b
+          j
+        i
+
+isPalidrome(0,1) = false
+first = 0
+last = 0
+
+loop 2:
+
+        0 1 2
+        b o b
+            j
+        i
+
+isPalidrome(0,2) = true
+ first = 0
+ last = 2
+
+
+        0 1 2
+        b o b
+            j
+          i
+
+isPalidrome(1,2) = false
+
+
+return substring 0, 2
  */
 public class PalindromeSubstring {
 
@@ -51,7 +84,13 @@ public class PalindromeSubstring {
         String test1 = findPalindromicSubstring("ac");
         System.out.println(test1);
 
+        test1 = findPalindromicSubstring("bb");
+        System.out.println(test1);
+
         test1 = findPalindromicSubstring("racecar");
+        System.out.println(test1);
+
+        test1 = findPalindromicSubstring("boracecarkras");
         System.out.println(test1);
 
     }
@@ -69,13 +108,15 @@ public class PalindromeSubstring {
         int first = 0;
         int last = 0;
 
-        for (int j = 1; j < length; j++) {
-            for (int i = 0; i < j; i++) {
+        for (int j = 1; j < length; j++) { // start with 1 because j - 1
+            for (int i = 0; i < j; i++) { // loop only up to j
                 // 2nd and 3rd criteria.
                 boolean isInnerWordPalindrome = isPalindrome[i + 1][j - 1] || j - i <= 2;
 
                 // 1st criteria
-                if (input.charAt(i) == input.charAt(j) && isInnerWordPalindrome) {
+                char leftCharacter = input.charAt(i);
+                char rightCharacter = input.charAt(j);
+                if (leftCharacter == rightCharacter && isInnerWordPalindrome) {
                     isPalindrome[i][j] = true;
 
                     if (j - i > last - first) {
