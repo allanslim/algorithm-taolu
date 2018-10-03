@@ -30,8 +30,84 @@ Explanation: The first non-whitespace character is '-', which is the minus sign.
              Then take as many numerical digits as possible, which gets 42.
 
 
-so the idea here
+so the idea here is to first convert the string to character array.
 
+"-123" => ['-','1','2','3']
+
+then you need variable to hold the following variables:
+
+head = 0
+tail = str.length
+sign = 1
+output = 0
+
+start by checking the sign.
+
+       ['-','1','2','3']
+         ^           ^
+      head          tail
+
+if( str[head] == '-')
+  sign = -1
+  head++
+
+  while ( head < tail )
+
+    output = output * 10 + str[head] - '0';
+    head++
+
+return output
 
  */
+
+    public static void main(String[] args) {
+        int number = stringToInteger("  -123");
+
+        System.out.println(number);
+    }
+
+    private static int stringToInteger(String s) {
+
+        char[] str = s.toCharArray();
+
+        int head = 0;
+        int tail = str.length;
+        int sign = 1;
+
+        long output = 0;
+
+        // if empty string - return 0
+        if(tail < 1) return 0;
+
+        // skip space.
+        while( head < tail && str[head] == ' ') head++;
+
+        // if after skipping space, it becomes empty - return 0
+        if(head == tail) return 0;
+
+        // check for sign
+        if ( str[head] == '+') {
+            head++;
+        } else if ( str[head] == '-') {
+            sign = -1;
+            head++;
+        }
+
+        while ( head < tail ) {
+            // if the character is not a number.
+            if( !(str[head] >= '0' && str[head] <= '9')) {
+                return (int) output * sign;
+            }
+
+            output = output * 10 + str[head] - '0';
+
+            // if its output of bounce return the max
+            if ( output > Integer.MAX_VALUE ) {
+                return ( sign == -1) ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+
+            head++;
+        }
+        return (int) output * sign;
+    }
 }
