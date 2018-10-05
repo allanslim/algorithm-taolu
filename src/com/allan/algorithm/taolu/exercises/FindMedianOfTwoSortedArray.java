@@ -41,7 +41,7 @@ Given two sorted array, find the median of both.
  x = x1 x2 x3 x4 x5 x6
  y = y1 y2 y3 y4 y5 y6 y7 y8
 
- We have to partition these elements into two halfs, such that, the number of elements in each half is exactly the same
+ We have to partition these elements into two halves, such that, the number of elements in each half is exactly the same
  -and- every element in the left half is less than or equal to every elements in the right half.
 
  let suppose we are partition x, like this:

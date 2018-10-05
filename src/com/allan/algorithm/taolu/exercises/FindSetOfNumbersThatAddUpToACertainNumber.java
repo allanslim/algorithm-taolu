@@ -12,6 +12,43 @@ public class FindSetOfNumbersThatAddUpToACertainNumber {
 //    k = 16
 //    answer:  2 subsets (6, 10) and (2, 4, 10)
 
+/*
+
+We use dynamic programming to solve this problem. First we can start from empty array.
+
+{}
+
+and starting from the right most element which as the value of 10, we should ask ourselves, shall we include
+the value of 10 or not?
+
+
+
+   if yes {10}
+  /
+{}
+  \
+    if no {}
+
+
+Then we continue to the next element, which is 6.
+
+
+
+
+
+       / {10,6}
+   {10}
+  /    \
+{}       {10}
+ \
+  \    {6}
+   \  /
+    {}
+      \
+       {}
+
+
+ */
 
     public static void main(String[] args) {
         int input[] = {2, 4, 6, 10};
@@ -32,19 +69,27 @@ public class FindSetOfNumbersThatAddUpToACertainNumber {
         if (map.containsKey(key)) {
             return map.get(key);
         }
+        // if k is zero, there's only 1 subset that has zero total, that would be the empty subset {}.
         if (k == 0) {
             return 1;
-        } else if (k < 0) {
+        }
+        // if key is negative, then return 0.
+        else if (k < 0) {
             return 0;
-        } else if (index < 0) {
+        }
+        // when the index is less than zero.
+        else if (index < 0) {
             return 0;
-        } else if (k < input[index]) {
+        }
+        // if k is less than current item, we need to skip this current item, because there's no way to find a subset including this current item.
+        else if (k < input[index]) {
             int currentValue = findNumberOfSubsets(input, k, index - 1, map);
             map.put(key, currentValue);
             return currentValue;
-        } else {
-            int currentValue =  findNumberOfSubsets(input, k - input[index], index - 1, map) +
-                    findNumberOfSubsets(input, k, index - 1, map );
+        }
+        // the sum of the current subset and the next subset.
+        else {
+            int currentValue =  findNumberOfSubsets(input, k - input[index], index - 1, map) + findNumberOfSubsets(input, k, index - 1, map );
             map.put(key, currentValue);
             return currentValue;
         }
