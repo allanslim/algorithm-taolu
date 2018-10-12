@@ -1,4 +1,4 @@
-package com.allan.algorithm.taolu.exercises.lexicographical;
+package com.allan.algorithm.taolu.exercises;
 
 //
 //Given a binary tree, you need to compute the length of the diameter of the tree.
