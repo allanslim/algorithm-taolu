@@ -49,13 +49,6 @@ public class DesignLRUCache {
             }
         }
 
-        public void removeFromTail() {
-            if (tail != null) {
-                tail = tail.previous;
-                tail.next = null;
-            }
-        }
-
         public String get(String key) {
             if (this.cache.containsKey(key)) {
                 Node current = this.cache.get(key);
@@ -63,6 +56,13 @@ public class DesignLRUCache {
                 return current.value;
             }
             return null;
+        }
+
+        private void removeFromTail() {
+            if (tail != null) {
+                tail = tail.previous;
+                tail.next = null;
+            }
         }
 
         private void moveToHead(Node current) {

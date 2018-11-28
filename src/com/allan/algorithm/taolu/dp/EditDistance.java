@@ -3,7 +3,6 @@ package com.allan.algorithm.taolu.dp;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class EditDistance {
 /*
@@ -38,79 +37,55 @@ exention -> exection (replace 'n' with 'c')
 exection -> execution (insert 'u')
 
 
- empty
- c
+The idea here is to do start comparing the last character.  Let's say your inputs are:
 
- * return c
+xb
+yc
 
- c
- empty
+X and Y can represent more than one characters, but what matters here is the last character, b and c.
 
- * return c
-
+if b and c are the same, that means there is no change, you can compare the rest, (which is x and y), if they are different
+then there's a chance.
 
  xb
+  ^
  yc
+  ^
 
- minimum of :
+since b and c are different, so you have 1 change. Your delta is 1.
+
+if they are the same, your delta is 0.
+
+xc
+ ^
+yc
+ ^
+
+But note that there are 3 possible ways to change. You can either remove the character to make them the same. Example to make
+xb and yc the same, you remove the c.
+
+xb
+y  <-- remove the c
+
+or you can also remove b, to make it.
+
+x   <--- b is removed
+yc
+
+
+
+To summarize, you get the minumum of the following changes:
+
+
  1) x,y + delta(b,c)
  2) xb, y  + 1
- 3) b, yc + 1
+ 3) x, yc + 1
 
 
-357725
-
-239265979
+what about the base case? if word1 is empty, the number of changes you need to make is the number of characters that word2 has. and vice versa.
 
 */
-    public static void main(String[] args) {
 
-        Map<String, Integer> memoize = new HashMap<>();
-        long startTime = System.nanoTime();
-        int distance = editDistance("horse", "ros");
-        long endTime = System.nanoTime();
-        System.out.println(distance);
-        System.out.println("no memoize: " + (endTime - startTime));
-
-        memoize.clear();
-        startTime = System.nanoTime();
-        distance = editDistance("horse", "ros", memoize);
-        endTime = System.nanoTime();
-        System.out.println(distance);
-        System.out.println("memoize: " + (endTime - startTime));
-
-        System.out.println(" editDistance 2:" + editDistance2("horse", "ros"));
-
-
-        startTime = System.nanoTime();
-        distance = editDistance("intention", "execution");
-        endTime = System.nanoTime();
-        System.out.println(distance);
-        System.out.println("no memoize: " + (endTime - startTime));
-
-
-        memoize.clear();
-        startTime = System.nanoTime();
-        distance = editDistance("intention", "execution", memoize);
-        endTime = System.nanoTime();
-        System.out.println(distance);
-        System.out.println("memoize: " + (endTime - startTime));
-
-        System.out.println(" editDistance 2:" + editDistance2("intention", "execution"));
-
-        memoize.clear();
-        startTime = System.nanoTime();
-        distance = editDistance("this is my fight song", "I cant fight this feeling", memoize);
-        endTime = System.nanoTime();
-        System.out.println(distance);
-        System.out.println("memoize: " + (endTime - startTime));
-
-        startTime = System.nanoTime();
-        System.out.println(" editDistance 2:" + editDistance2("this is my fight song", "I cant fight this feeling"));
-        System.out.println("no memoize: " + (endTime - startTime));
-
-
-    }
     // recursive
     private static int editDistance(String word1, String word2) {
         if (word1.length() == 0) {
@@ -172,5 +147,55 @@ exection -> execution (insert 'u')
         }
         return table[word1.length()][word2.length()];
     }
+
+    public static void main(String[] args) {
+
+        Map<String, Integer> memoize = new HashMap<>();
+        long startTime = System.nanoTime();
+        int distance = editDistance("horse", "ros");
+        long endTime = System.nanoTime();
+        System.out.println(distance);
+        System.out.println("no memoize: " + (endTime - startTime));
+
+        memoize.clear();
+        startTime = System.nanoTime();
+        distance = editDistance("horse", "ros", memoize);
+        endTime = System.nanoTime();
+        System.out.println(distance);
+        System.out.println("memoize: " + (endTime - startTime));
+
+        System.out.println(" editDistance 2:" + editDistance2("horse", "ros"));
+
+
+        startTime = System.nanoTime();
+        distance = editDistance("intention", "execution");
+        endTime = System.nanoTime();
+        System.out.println(distance);
+        System.out.println("no memoize: " + (endTime - startTime));
+
+
+        memoize.clear();
+        startTime = System.nanoTime();
+        distance = editDistance("intention", "execution", memoize);
+        endTime = System.nanoTime();
+        System.out.println(distance);
+        System.out.println("memoize: " + (endTime - startTime));
+
+        System.out.println(" editDistance 2:" + editDistance2("intention", "execution"));
+
+        memoize.clear();
+        startTime = System.nanoTime();
+        distance = editDistance("this is my fight song", "I cant fight this feeling", memoize);
+        endTime = System.nanoTime();
+        System.out.println(distance);
+        System.out.println("memoize: " + (endTime - startTime));
+
+        startTime = System.nanoTime();
+        System.out.println(" editDistance 2:" + editDistance2("this is my fight song", "I cant fight this feeling"));
+        System.out.println("no memoize: " + (endTime - startTime));
+
+
+    }
+
 
 }
