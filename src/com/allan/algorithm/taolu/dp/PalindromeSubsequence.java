@@ -177,7 +177,7 @@ public class PalindromeSubsequence {
 
         int[][] table = new int[n][n];
 
-        // if the length of the string is only 1, they are all palindome with length 1.
+        // if the length of the string is only 1, they are all palindrome with length 1.
         for(int i  = 0; i < n; i++) {
             table[i][i] = 1;
         }

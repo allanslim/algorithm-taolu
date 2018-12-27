@@ -96,6 +96,34 @@ public class PalindromeSubstring {
     }
 
     public static String findPalindromicSubstring(String input) {
+
+        boolean[][] matrix = new boolean[input.length()][input.length()];
+        int length = input.length();
+        int first = 0;
+        int last = 0;
+
+        //substring of length 1
+        for(int i = 0; i < length; i++) {
+            matrix[i][i] = true;
+        }
+
+        for(int lengthOfStr = 2; lengthOfStr <= length; lengthOfStr++) {
+            for(int i = 0; i < length - lengthOfStr + 1; i++) {
+                int j = i + lengthOfStr - 1;
+
+                if(input.charAt(i) == input.charAt(j) && matrix[i+1][j-1] == true) {
+                    matrix[i][j] = true;
+                    if(j - i > last - first) {
+                        first = i;
+                        last = j;
+                    }
+                }
+            }
+        }
+        return input.substring(first, last + 1);
+    }
+
+    public static String findPalindromicSubstring2(String input) {
         int length = input.length();
 
         // edge case
