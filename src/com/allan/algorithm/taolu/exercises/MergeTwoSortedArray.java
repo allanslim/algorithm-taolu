@@ -47,10 +47,10 @@ public class MergeTwoSortedArray {
 
          if (firstUnmergedInput1 < firstUnmergedInput2) {
              mergedArray[currentIndexMerged] = firstUnmergedInput1;
-             firstUnmergedInput1++;
+             currentIndexInput1++;
          } else {
              mergedArray[currentIndexMerged] = firstUnmergedInput2;
-             firstUnmergedInput2++;
+             currentIndexInput2++;
          }
          currentIndexMerged++;
      }

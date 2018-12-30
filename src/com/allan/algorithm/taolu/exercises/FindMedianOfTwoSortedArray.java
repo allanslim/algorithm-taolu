@@ -215,7 +215,7 @@ then you found the partition, use the formula above:
                 } else {
                     return (double) Math.max(maxLeftX, maxLeftY);
                 }
-            } else if (maxLeftX > minRightY) { // we are too far on the right side for partiotnX. go to the left
+            } else if (maxLeftX > minRightY) { // we are too far on the right side for partitionX. go to the left
                 high = partitionX - 1;
             } else { // we are too far on the left side of partitionX, go to the right.
                 low = partitionX + 1;

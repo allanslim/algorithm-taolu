@@ -167,9 +167,43 @@ public class PalindromeSubsequence {
 
 //        System.out.println(countSubstrings("aaa"));
 
-        System.out.println(countSubstrings("babcbab"));
+//        System.out.println(countSubstrings("babcbab"));
 
+        System.out.println(palindromeSubSequence("racecar"));
 
+    }
+
+    public static int palindromeSubSequence(String input) {
+        int n = input.length();
+
+        int[][] isPalindrome = new int[n][n];
+
+        for(int i = 0; i < n; i++) {
+            isPalindrome[i][i] = 1;
+        }
+
+        for(int i = 0; i < n - 1; i++) {
+            if(input.charAt(i) == input.charAt(i+1)) {
+                isPalindrome[i][i+1] = 2;
+            }else {
+                isPalindrome[i][i+1] = 1;
+            }
+        }
+//        printMatrix(isPalindrome);
+
+        for(int l = 3; l <= n; l++) {
+            for( int i = 0; i < n - l + 1; i++) {
+                int j = i + l - 1;
+                if(input.charAt(i) == input.charAt(j)) {
+                    isPalindrome[i][j] = 2 + isPalindrome[i + 1][j - 1];
+                }else {
+                    isPalindrome[i][j] = Math.max(isPalindrome[i][j - 1], isPalindrome[i + 1][j]);
+                }
+
+            }
+        }
+//        printMatrix(isPalindrome);
+        return isPalindrome[0][n - 1];
     }
 
     public static int countSubstrings(String input) {

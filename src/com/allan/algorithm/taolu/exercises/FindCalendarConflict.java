@@ -31,7 +31,7 @@ if you have a lot of meeting. Let say:
 In the example above, the first meeting's start time is at 8AM and ends at 10PM. The second meeting starts at 9AM and ends at 11AM.
 
 The conflicts happends if the start time happens before the end time. The start time of second meeting starts at 9AM, and it is before
-the the end time of the second meeting.
+the the end time of the first meeting.
 
 It is easier to check if the two meeting does not conflict than conflicting.
 
@@ -50,7 +50,6 @@ if secondMeeting.startTime <= firstMeeting.endTime   --> no conflict
         }
     }
 
-
     List<Meeting> findConflict(List<Meeting> meetings) {
 
         // if meetings is not sorted, we have to sort it first by earliest start time.
@@ -63,7 +62,7 @@ if secondMeeting.startTime <= firstMeeting.endTime   --> no conflict
 
         for (int i = 1; i < meetings.size(); i++) {
 
-            Meeting currentMeeting = meetings.get(0);
+            Meeting currentMeeting = meetings.get(i);
 
             if ( currentMeeting.startTime >= endTime ) { // no conflict
                 if(conflicts.size() > 1) {
