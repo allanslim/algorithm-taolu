@@ -18,7 +18,7 @@ public class FindPrime {
 
     private static boolean isPrime(int number) {
         for( int i = 2; i < number; i++) {
-            if(number % 2 == 0) {
+            if(number % i == 0) {
                 return false;
             }
         }
