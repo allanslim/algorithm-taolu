@@ -16,7 +16,28 @@ public class LongestNonRepeatingSubstring {
      * abbacadeabcdeea
      *
      */
+/*
 
+To solve this problem, the solution is to use a sliding window algorithm.
+
+you need a Set to store the characters that has been seen so far, and you need a 2 pointers (start and end)
+
+
+ max = {0,0}
+
+  abbcad
+  ^
+  |
+  end
+  start
+
+  seen = []
+
+  increment the end, and store the value to maxWindow. Shrink the window, by incrementing start if windows
+  is already seen.
+
+
+ */
     public static void main(String[] args) {
         String longest = longestNonRepeatingSubstring("abbacadeabcdeea");
         System.out.println(longest);

@@ -8,7 +8,8 @@ import java.util.List;
 public class SlidingWindowMaximum {
 /**
 
- Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
+ Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right.
+ You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
 
  Example:
 
@@ -31,7 +32,7 @@ public class SlidingWindowMaximum {
  So the idea here is to use a Deque. The deque should have the size of k.
  deque should be storing the index. You use the removeFromHead if the element
  is out of window, and use the removeFromTail, if the element is lesser
- than the currenet element
+ than the current element
 
  deque = []
  result = []
