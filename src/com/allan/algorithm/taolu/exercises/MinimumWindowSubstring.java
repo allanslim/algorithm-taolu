@@ -39,7 +39,7 @@ import java.util.Map;
  * 2) A hashMap to keep track of how letters in the set you've seen in the current window intitialized with all the characters
  * in the set as keys, and all the values as 0.
  *
- * 3) A counter to keep track of any time we see a new letter from teh set when we grow the window, or lose a letter from
+ * 3) A counter to keep track of any time we see a new letter from the set when we grow the window, or lose a letter from
  * the set when we shrink the window. Initialized to the number of characters we are looking for
  *
  * 4) A fast and slow pointer both initalized to 0.
@@ -67,7 +67,7 @@ public class MinimumWindowSubstring {
         String t = "ABA";
 
         System.out.println("minWindowWithRepeats: " + minWindowWithRepeats(s, t)); // BACA
-        System.out.println("minimumWindowSubstring: " + minimumWindowSubstring(s, t)); // BACA
+        System.out.println("minimumWindowSubstring: " + minimumWindowSubstring(s, t)); //
 
         s = "ADOBECODEBANC";
         t = "ABC";
