@@ -15,8 +15,40 @@ package com.allan.algorithm.taolu.exercises;
 //
 // Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 //
-//Note: The length of path between two nodes is represented by the number of edges between them.
-
+// essentially it is the height of the left subtree + the height of the right subtree and the root node.
+//
+// diameter = height(left subtree) + height(right subtree) + 1
+//
+// Take note that there are cases where it does not passes to the root node.
+//
+//         1
+//        / \
+//       2   3
+//      / \
+//     4   5
+//    /     \
+//   6       7
+//            \
+//             9
+//              \
+//              10
+//
+// in this case, the diameter is [6,4,2,5,7,9,10], diameter = 7
+//
+//
+//  if the root node is 2, then the fomula above will work. But in this case, it will not.
+// so we have to find the diameter of the left subtree and the right subtree.
+//
+// diameter = Max( diameterOfRightSubtree, diameterOfLeftSubtree).
+//
+// diameter = Max( diameter(root.left), diameter(root.right) )
+//
+//
+// In this case, we have two consideration.
+// 1) diameter of a tree that passes thru the root node
+// 2) diameter of a tree that does not pass thru the root node
+//
+// We need to find which one is the maximum.
 public class DiameterOfBinaryTree {
 
     static class Node {
