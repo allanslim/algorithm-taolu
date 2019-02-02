@@ -93,6 +93,9 @@ public class PalindromeSubstring {
         test1 = findPalindromicSubstring("boracecarkras");
         System.out.println(test1);
 
+        test1 = findPalindromicSubstring("boracecarkrasxxxsooloosxx");
+        System.out.println(test1);
+
     }
 
     public static String findPalindromicSubstring(String input) {
@@ -107,8 +110,8 @@ public class PalindromeSubstring {
             matrix[i][i] = true;
         }
 
-        for(int lengthOfStr = 2; lengthOfStr <= length; lengthOfStr++) {
-            for(int i = 0; i < length - lengthOfStr + 1; i++) {
+        for(int lengthOfStr = 2; lengthOfStr < length; lengthOfStr++) {
+            for(int i = 0; i <= length - lengthOfStr; i++) {
                 int j = i + lengthOfStr - 1;
 
                 if(input.charAt(i) == input.charAt(j) && matrix[i+1][j-1] == true) {
