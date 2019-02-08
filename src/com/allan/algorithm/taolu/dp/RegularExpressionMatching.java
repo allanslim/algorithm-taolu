@@ -2,7 +2,7 @@ package com.allan.algorithm.taolu.dp;
 
 public class RegularExpressionMatching {
 
-    /**
+/**
 
      example:
 
@@ -42,7 +42,7 @@ example: if the pattern is xa* and string is x, a* can represent zero or more oc
 
      now let say for example, the input is:
 
-     | x| a | *
+      | x| a | *
      x|  |   |
      a|  |   |
 

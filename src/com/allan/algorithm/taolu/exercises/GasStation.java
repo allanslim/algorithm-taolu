@@ -72,7 +72,7 @@ debt =   [-2, -4, -6,-6, -6]
 start =  [0,   1, 2, 2,  2 ]
 
 
-if remain + debt >= 0 then return start.
+if remain + debt >= 0 then return start
 
 
  */

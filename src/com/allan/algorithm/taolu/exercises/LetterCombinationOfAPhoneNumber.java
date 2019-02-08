@@ -47,7 +47,7 @@ The idea here is to be able to be able to find the permutation. In the example a
 //        lettersCombination.forEach( l -> System.out.print(l + ", "));
 //        System.out.println("--");
 
-        List<String> lettersCombination2 = lettersCombination("977");
+        List<String> lettersCombination2 = lettersCombination("523");
         lettersCombination2.forEach( l -> System.out.print(l + ", "));
         System.out.println("");
     }

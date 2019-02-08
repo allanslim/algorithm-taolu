@@ -10,11 +10,12 @@ public class BinaryIndexedTree {
         this.bitree = new int[MAX_SIZE];
     }
 
-    public BinaryIndexedTree( int size) {
-        this.bitree = new int[size + 1];
+    public BinaryIndexedTree( int[] input) {
+        this.bitree = new int[input.length + 1];
+        constructTree(input);
     }
 
-    public void constructTree(int[] input) {
+    private void constructTree(int[] input) {
         for(int i = 0; i < input.length; i++) {
             bitree[i] = 0;
         }
