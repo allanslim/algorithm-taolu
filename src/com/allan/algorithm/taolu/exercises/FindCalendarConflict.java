@@ -35,7 +35,7 @@ the the end time of the first meeting.
 
 It is easier to check if the two meeting does not conflict than conflicting.
 
-if secondMeeting.startTime <= firstMeeting.endTime   --> no conflict
+if secondMeeting.startTime <= firstMeeting.endTime   --> conflict
 
 */
     public static class Meeting {
@@ -81,6 +81,4 @@ if secondMeeting.startTime <= firstMeeting.endTime   --> no conflict
 
         return results;
     }
-
-
 }

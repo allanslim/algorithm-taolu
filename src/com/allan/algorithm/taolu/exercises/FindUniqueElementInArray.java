@@ -21,9 +21,14 @@ public class FindUniqueElementInArray {
     // 4 XOR 3 = 7
     // 7 XOR 4 = 3
     private static int findUniqueInteger(int[] input1, int[] input2) {
+
+        if(input1.length < input2.length) {
+            return findUniqueInteger(input2, input1);
+        }
+
         int result = 0;
 
-        for(int i = 0; i < Math.min(input1.length, input2.length); i++) {
+        for(int i = 0; i < input2.length; i++) {
             int temp =  input1[i] ^ input2[i];
             result ^= temp;
 
